@@ -3,19 +3,28 @@ Parsing data from sites using Jsoup and ViewModel.
 
 Dependencies:
 
+Build/Gradle Project
+Dependencies:
 ```
-* classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
-* classpath "com.google.gms:google-services:4.3.3"
-* classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
+classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+classpath "com.google.gms:google-services:4.3.3"
+classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
 ```
 
+repositories:
+```
 mavenCentral()
 maven { url 'https://jitpack.io' }
+```
 
-
+Build/Gradle Module App
+In top:
+```
 apply plugin: 'kotlin-kapt'
+```
 
-
+Dependencies:
+```
 // view model and live data
 implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
@@ -32,6 +41,9 @@ kapt 'com.android.databinding:compiler:3.2.0-alpha10'
 //coroutines
 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.8"
 implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8"
+```
 
-
+In Bottom:
+```
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+```
