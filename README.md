@@ -3,10 +3,11 @@ Parsing data from sites using Jsoup and ViewModel.
 
 Dependencies:
 
-classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
-classpath "com.google.gms:google-services:4.3.3"
-classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
-
+```
+* classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.72"
+* classpath "com.google.gms:google-services:4.3.3"
+* classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.0"
+```
 
 mavenCentral()
 maven { url 'https://jitpack.io' }
