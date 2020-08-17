@@ -3,10 +3,12 @@ package ru.embersoft.parsingdatawithviewmodel.adapters
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import ru.embersoft.parsingdatawithviewmodel.BR
 import ru.embersoft.parsingdatawithviewmodel.databinding.EventItemBinding
+import ru.embersoft.parsingdatawithviewmodel.fragments.HomeFragmentDirections
 import ru.embersoft.parsingdatawithviewmodel.models.EventItem
 
 class EventAdapter(private val context: Context): RecyclerView.Adapter<EventAdapter.ViewHolder>() {
@@ -39,6 +41,12 @@ class EventAdapter(private val context: Context): RecyclerView.Adapter<EventAdap
             binding.executePendingBindings()
             // set image
             Picasso.get().load(item.image).into(binding.imageView)
+
+            itemView.setOnClickListener {
+                // navigate to other fragment with Safe Args
+                val action = HomeFragmentDirections.actionNavigationHomeToEventDetailFragment3(item)
+                findNavController().navigate(action)
+            }
 
         }
 

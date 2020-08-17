@@ -2,6 +2,7 @@ package ru.embersoft.parsingdatawithviewmodel.repository
 
 import android.content.Context
 import org.jsoup.Jsoup
+import ru.embersoft.parsingdatawithviewmodel.models.EventDetail
 import ru.embersoft.parsingdatawithviewmodel.models.EventItem
 import java.io.IOException
 
@@ -20,7 +21,7 @@ class Repo {
         return instance!!
     }
 
-    fun getEvents(): MutableList<EventItem> {
+    fun getEventsList(): MutableList<EventItem> {
         val listData = mutableListOf<EventItem>()
         try {
             val url = "https://www.eventfinda.co.nz/whatson/events/new-zealand"
@@ -54,6 +55,28 @@ class Repo {
             e.printStackTrace()
         }
         return listData
+    }
+
+    fun getEvent(url: String): EventDetail {
+        val item = EventDetail()
+        try {
+            val document = Jsoup.connect(url).get()
+            val detail = document.select("div.module.description")
+                .select("p")
+                .eq(1)//select one or select all in cycle
+                .text()
+            val ticketName = document.select("span.ticket-name")
+                .text()
+            val ticketPrice = document.select("span.ticket-price")
+                .text()
+            val ticketInfo = "$ticketName: $ticketPrice"
+            item.detail = detail
+            item.ticketInfo = ticketInfo
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+        return item
+
     }
 
 

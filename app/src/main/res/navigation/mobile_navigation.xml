@@ -9,7 +9,11 @@
         android:id="@+id/navigation_home"
         android:name="ru.embersoft.parsingdatawithviewmodel.fragments.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_eventDetailFragment3"
+            app:destination="@id/eventDetailFragment3" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,13 @@
         android:name="ru.embersoft.parsingdatawithviewmodel.fragments.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/eventDetailFragment3"
+        android:name="ru.embersoft.parsingdatawithviewmodel.fragments.EventDetailFragment"
+        android:label="EventDetailFragment" >
+        <argument
+            android:name="eventItem"
+            app:argType="ru.embersoft.parsingdatawithviewmodel.models.EventItem"
+            app:nullable="true" />
+    </fragment>
 </navigation>
